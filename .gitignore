@@ -7,11 +7,6 @@ env/
 venv/
 *.egg-info/
 
-# Results
-results/
-*.png
-*.jpg
-
 # OS
 .DS_Store
 Thumbs.db

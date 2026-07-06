@@ -94,25 +94,7 @@ Recall: Ability to find positive samples
 F1-Score: Harmonic mean of precision and recall
 Confusion Matrix: Detailed prediction breakdown
 
-5. 📈 Results
-
-Sample Output
-
-text
-==================================================
-CLASSIFICATION REPORT
-==================================================
-              precision    recall  f1-score   support
-
-         0.0       0.85      0.90      0.87        40
-         1.0       0.80      0.71      0.75        21
-
-    accuracy                           0.84        61
-   macro avg       0.82      0.81      0.81        61
-weighted avg       0.83      0.84      0.83        61
-==================================================
-
-6. Visualizations
+5. Visualizations
 
 The script generates three visualizations:
 
@@ -126,8 +108,8 @@ Confusion Matrix (confusion_matrix.png)
 
 Visual representation of model predictions vs actual labels
 
-7. 📝 License
+6. 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-8. Author: @akassymbekova
+7. Author: @akassymbekova
