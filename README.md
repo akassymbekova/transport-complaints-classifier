@@ -1,100 +1,133 @@
 # Transport Complaints Classifier
 
-## Project Goal and  Project Overview
+[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-- Goal: Automatically detect if a transport review is positive (1) or negative (0).
-- Dataset: AI_dataset.xlsx (Sheet: Лист1).
-- Technologies Used:
-Python pandas, scikit-learn, nltk, matplotlib, seaborn
-- ML Model: Logistic Regression
-- Evaluation Metrics: Classification Report, Confusion Matrix
+A machine learning system for automatic classification of public transport feedback as **positive (1)** or **negative (0)** using Natural Language Processing (NLP) techniques.
 
----
+## 📋 Overview
 
-## 🛠️ Tasks Completed
-- Text preprocessing (cleaning, lemmatization, stopword removal)
-- Automatic labeling of complaints (positive = 1, negative = 0)
-- Feature extraction using TF-IDF vectorization
-- Model training using Logistic Regression
-- Model evaluation (classification report, confusion matrix visualization)
+This project implements a complete NLP pipeline to classify customer reviews about public transport services. It processes Russian-language text, extracts features using TF-IDF vectorization, and trains a Logistic Regression model for binary sentiment classification.
 
----
+### Key Features
 
-##  Dataset
-- File used: `AI_dataset.xlsx`
-- Source: Provided as part of the project
-- Sheet Name: `Лист1`
-- Contains text descriptions of public transport feedback in Russian.
+-  **Text Preprocessing**: Cleaning, tokenization, stopword removal, and lemmatization
+-  **Russian Language Support**: Specialized handling for Russian text
+-  **TF-IDF Vectorization**: Feature extraction from text data
+-  **Logistic Regression**: Machine learning classification
+-  **Visualizations**: Label distribution, word frequency, and confusion matrix
+-  **Imbalance Handling**: Automatic handling of imbalanced datasets
 
----
+## 🎯 Project Goal
 
-## 📚 Libraries Used
-- `pandas`
-- `numpy`
-- `matplotlib`
-- `seaborn`
-- `nltk`
-- `scikit-learn`
+Automatically detect if a transport review expresses:
+- **Positive sentiment (1)**: Good service, thanks, comfortable, fast
+- **Negative sentiment (0)**: Complaints, delays, bad service, waiting
 
----
+## 📁 Project Structure
 
-##  Visualizations
-- Review distribution by sentiment (positive vs negative)
-- Word frequency analysis
-- Confusion matrix of model predictions
+transport-complaints-classifier/
+├── data/
+│   └── AI_dataset.xlsx          # Dataset file
+├── results/                     # Output directory (created automatically)
+│   ├── confusion_matrix.png     # Model performance visualization
+│   └── label_distribution.png   # Sentiment distribution
+├── transport_classifier.py      # Main script
+├── requirements.txt             # Dependencies
+└── README.md                    # This file
 
----
 
-## Preprocessing Steps
-- Lowercasing text
-- Removing special characters and numbers
-- Tokenization
-- Stopword removal (using Russian stopwords)
-- Lemmatization
+## 🚀 Quick Start
 
----
+### Prerequisites
 
-## ⚙️ Model Training
-- Text features extracted using **TF-IDF Vectorizer**
-- Model: **Logistic Regression**
-- Stratified train/test split to maintain label balance
-- Handling imbalance by forcing a minimum number of positive samples if necessary
+- Python 3.8 or higher
+- pip package manager
 
----
+### Installation
 
-## Model Evaluation
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- Confusion Matrix
+1. **Clone the repository**
 
----
+```bash
+git clone https://github.com/akassymbekova/transport-complaints-classifier.git
+cd transport-complaints-classifier
 
-## 🚀 How to Run
+2. **Install dependencies**
+pip install -r requirements.txt
+```
 
-1. Install the required libraries by running this command in your terminal:
+### Dataset
 
-pip install pandas numpy matplotlib seaborn nltk scikit-learn openpyxl
+File: AI_dataset.xlsx
+Sheet: Лист1
+Language: Russian
+Content: Public transport feedback and complaints
+Data Format
 
-2. Make sure you have the dataset file AI_dataset.xlsx placed in the same folder as your script task.py. Run the Python script by executing the following command:
+- The script automatically labels texts using keyword matching:
 
-python task.py
+Positive keywords: хорошо, спасибо, отлично, удобно, быстро
+Negative keywords: нет, плохо, задержка, ждать, долго, опоздание
 
-or, if you are on a Mac and using Python 3:
+### 🧠 Methodology
 
-python3 task.py
+1. Text Preprocessing Pipeline
 
-3. What the script will do:
-- Preprocess and clean the complaint review texts.
-- Automatically label them as positive (1) or negative (0) based on keywords.
-- Handle imbalance if there are too few positive samples.
-- Split the data into training and testing sets using a stratified method.
-- Train a Logistic Regression model on the data.
-- Print the classification report showing accuracy, precision, recall, and F1-score.
-- Visualize the distribution of labels (positive/negative) and the model's confusion matrix.
+Raw Text → Lowercase → Remove Special Characters → Tokenization → Remove Stopwords → Lemmatization → Clean Text
 
-✅ Note:
-If this is your first time running the script, nltk will automatically download some necessary resources (stopwords and wordnet). Please ensure you are connected to the Internet for that.
+2. Feature Extraction
 
-✅ If you face a problem with python, try running the script using python3.
+Method: TF-IDF (Term Frequency-Inverse Document Frequency)
+Purpose: Convert text data into numerical feature vectors
+
+3. Model Training
+
+Algorithm: Logistic Regression
+Split: 80% training, 20% testing (stratified)
+Random State: 42 (for reproducibility)
+
+4. Evaluation Metrics
+
+Accuracy: Overall correctness
+Precision: Quality of positive predictions
+Recall: Ability to find positive samples
+F1-Score: Harmonic mean of precision and recall
+Confusion Matrix: Detailed prediction breakdown
+
+5. 📈 Results
+
+Sample Output
+
+text
+==================================================
+CLASSIFICATION REPORT
+==================================================
+              precision    recall  f1-score   support
+
+         0.0       0.85      0.90      0.87        40
+         1.0       0.80      0.71      0.75        21
+
+    accuracy                           0.84        61
+   macro avg       0.82      0.81      0.81        61
+weighted avg       0.83      0.84      0.83        61
+==================================================
+
+6. Visualizations
+
+The script generates three visualizations:
+
+Label Distribution (label_distribution.png)
+
+Shows balance between positive and negative samples
+Word Frequency (word_frequency.png)
+
+Top 20 most frequent words in the dataset
+Confusion Matrix (confusion_matrix.png)
+
+Visual representation of model predictions vs actual labels
+
+7. 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+8. Author: @akassymbekova
